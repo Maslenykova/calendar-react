@@ -18,6 +18,7 @@ export const getWeekStartDate = (date) => {
     }
     return result;
   };
+
   
   export const getDateTime = (date, time) => {
     const [hours, minutes] = time.split(':');
