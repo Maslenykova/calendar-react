@@ -13,10 +13,17 @@ const Header = ({ weekDates, onPrevWeek, onNextWeek, onToday }) => {
 
   const handleModalSubmit = (formData) => console.log('Form Data:', formData);
 
-  const currentMonth = 
-  weekDates && weekDates.length > 0 && weekDates[0] instanceof Date
-    ? months[weekDates[0].getMonth()]
-    : 'Invalid month';
+  const getDisplayedMonths = (weekDates) => {
+    if (!weekDates || weekDates.length === 0) return ''; 
+  
+    const firstMonth = months[weekDates[0].getMonth()]; 
+    const lastMonth = months[weekDates[weekDates.length - 1].getMonth()]; 
+    return firstMonth === lastMonth ? firstMonth : `${firstMonth} - ${lastMonth}`;
+  };
+
+  const displayedMonths = getDisplayedMonths(weekDates);
+
+  
 
   return (
     <header className="header">
@@ -45,7 +52,7 @@ const Header = ({ weekDates, onPrevWeek, onNextWeek, onToday }) => {
         >
           <i className="fas fa-chevron-right"></i>
         </button>
-        <span className="navigation__displayed-month">{currentMonth}</span>
+        <span className="navigation__displayed-month">{displayedMonths}</span>
       </div>
     </header>
   );
