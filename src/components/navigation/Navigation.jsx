@@ -27,30 +27,5 @@ const Navigation = ({ weekDates }) => {
   );
 };
 
-// const Navigation = ({ weekDates }) => {
-//   const today = new Date().toDateString(); // Получаем текущую дату в формате строки
-
-//   return (
-//     <header className="calendar__header">
-//       {weekDates.map((dayDate) => {
-//         const isToday = dayDate.toDateString() === today; // Сравниваем дату с текущей
-//         return (
-//           <div
-//             className={`calendar__day-label day-label ${
-//               isToday ? 'current-day' : ''
-//             }`}
-//             key={dayDate}
-//           >
-//             <span className="day-label__day-name">
-//               {dayDate.toLocaleString('default', { weekday: 'short' })}
-//             </span>
-//             <span className="day-label__day-number">{dayDate.getDate()}</span>
-//           </div>
-//         );
-//       })}
-//     </header>
-//   );
-// };
-
 
 export default Navigation;
