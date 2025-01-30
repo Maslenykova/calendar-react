@@ -15,7 +15,7 @@ const Week = ({ weekDates, events }) => {
         const dayEvents = events.filter(
           (event) => event.dateFrom > dayStart && event.dateTo < dayEnd
         );
-
+      
         return (
           <Day
             key={dayStart.getDate()}
@@ -28,4 +28,6 @@ const Week = ({ weekDates, events }) => {
   );
 };
 
-export default Week;
+
+
+  export default Week;

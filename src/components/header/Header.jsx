@@ -1,35 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '../modal/Modal';
 import './header.scss';
 import { months } from '../../utils/dateUtils.js';
 
-
 const Header = ({ weekDates, onPrevWeek, onNextWeek, onToday }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
   const createTask = () => setIsModalOpen(true);
-
   const closeModal = () => setIsModalOpen(false);
-
   const handleModalSubmit = (formData) => console.log('Form Data:', formData);
 
   const getDisplayedMonths = (weekDates) => {
-    if (!weekDates || weekDates.length === 0) return ''; 
-  
-    const firstMonth = months[weekDates[0].getMonth()]; 
-    const lastMonth = months[weekDates[weekDates.length - 1].getMonth()]; 
+    if (!weekDates || weekDates.length === 0) return '';
+
+    const firstMonth = months[weekDates[0].getMonth()];
+    const lastMonth = months[weekDates[weekDates.length - 1].getMonth()];
+    
     return firstMonth === lastMonth ? firstMonth : `${firstMonth} - ${lastMonth}`;
   };
 
-  const displayedMonths = getDisplayedMonths(weekDates);
+  useEffect(() => {
+    if (weekDates && weekDates.length > 0) {
+      const firstDay = weekDates[0];
+      const lastDay = weekDates[weekDates.length - 1];
 
-  
+      if (firstDay.getMonth() === 11 && lastDay.getMonth() === 0) {
+        setCurrentYear(lastDay.getFullYear());
+      } else {
+        setCurrentYear(firstDay.getFullYear());
+      }
+    }
+  }, [weekDates]);
+
+  const displayedMonths = getDisplayedMonths(weekDates);
 
   return (
     <header className="header">
-      <button className="create-task-btn" onClick={createTask}>
+      <button className="create-task-btn button" onClick={createTask}>
         <i className="fas fa-plus create-task-btn__icon" aria-hidden="true"></i>
-        <span>Create</span>
+        <span> Create</span>
       </button>
 
       {isModalOpen && <Modal onClose={closeModal} onSubmit={handleModalSubmit} />}
@@ -52,7 +62,9 @@ const Header = ({ weekDates, onPrevWeek, onNextWeek, onToday }) => {
         >
           <i className="fas fa-chevron-right"></i>
         </button>
-        <span className="navigation__displayed-month">{displayedMonths}</span>
+        <span className="navigation__displayed-month">
+          {displayedMonths} {currentYear}
+        </span>
       </div>
     </header>
   );
