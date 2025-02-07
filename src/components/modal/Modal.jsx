@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import './modal.scss';
+
 
 class Modal extends Component {
   state = {
@@ -10,27 +10,66 @@ class Modal extends Component {
     endTime: '',
     description: '',
   };
+  isMountedComponent = false; 
+
+  componentDidMount() {
+    this.isMountedComponent = true; 
+    const now = new Date();
+    const currentDate = now.toISOString().split('T')[0]; 
+    const currentTime = now.toTimeString().slice(0, 5); 
+
+    this.setState({
+      date: currentDate,
+      startTime: currentTime,
+      endTime: this.getDefaultEndTime(currentTime),
+    });
+  }
+  
+  componentWillUnmount() {
+    this.isMountedComponent = false;
+  }
+
+  getDefaultEndTime = (startTime) => {
+    const [hours, minutes] = startTime.split(':').map(Number);
+    const endTime = new Date();
+    endTime.setHours(hours + 1, minutes); 
+    return endTime.toTimeString().slice(0, 5);
+  };
+
   handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
+    this.setState({ [name]: value });
   };
+
 
   handleSubmit = (event) => {
     event.preventDefault();
-    if (!this.state.title || !this.state.date) {
-      alert('Title and Date are required!');
+  
+    const { title, date, startTime, endTime, description } = this.state;
+  
+    if (!title || !date || !startTime || !endTime) {
+      alert('Title, Date, Start Time, and End Time are required!');
       return;
     }
-    this.props.onSubmit(this.state);
+  
+    const newEvent = {
+      title,
+      date,
+      startTime,
+      endTime,
+      description,
+    };
+  
+    this.props.onSubmit(newEvent); 
+  
     this.setState({
       title: '',
-      date: '',
-      startTime: '',
-      endTime: '',
+      date: new Date().toISOString().split('T')[0],
+      startTime: new Date().toTimeString().slice(0, 5),
+      endTime: this.getDefaultEndTime(new Date().toTimeString().slice(0, 5)),
       description: '',
     });
+  
     this.props.onClose();
   };
 
@@ -39,7 +78,9 @@ class Modal extends Component {
       <div className="modal overlay">
         <div className="modal__content">
           <div className="create-event">
-            <button className="create-event__close-btn"  onClick={this.props.onClose} >+</button>
+            <button className="create-event__close-btn" onClick={this.props.onClose}>
+              +
+            </button>
             <form className="event-form" onSubmit={this.handleSubmit}>
               <input
                 type="text"
@@ -50,8 +91,13 @@ class Modal extends Component {
                 onChange={this.handleChange}
               />
               <div className="event-form__time">
-                <input type="date" name="date" className="event-form__field"  value={this.state.date}
-                  onChange={this.handleChange} />
+                <input
+                  type="date"
+                  name="date"
+                  className="event-form__field"
+                  value={this.state.date}
+                  onChange={this.handleChange}
+                />
                 <input
                   type="time"
                   name="startTime"
@@ -85,5 +131,6 @@ class Modal extends Component {
     );
   }
 }
+
 
 export default Modal;
