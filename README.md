@@ -1,1 +1,3 @@
-https://maslenykova.github.io/calendar-react/# React-calendar-project
+React-calendar-project
+
+https://maslenykova.github.io/calendar-react/
