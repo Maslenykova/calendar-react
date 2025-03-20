@@ -9,8 +9,8 @@ Syte Link# https://maslenykova.github.io/calendar-react/
 - [Flexbox](https://en.wikipedia.org/wiki/CSS_Flexible_Box_Layout)
 - [Sass (Scss)](https://sass-lang.com/)
 - [BEM methodology](https://en.bem.info/methodology/)
-- [JavaScript]
-- [React]
+- [JavaScript](https://developer.mozilla.org/ru/docs/Web/JavaScript)
+- [React](https://react.dev/)
 
 ### Author
 Maslenykova Svetlana
