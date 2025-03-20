@@ -1,6 +1,7 @@
 ## Project: Calendar (JS edition)
 
-### [Syte Link]( https://maslenykova.github.io/calendar-react/src/index.html/)
+### [Syte Link]( https://maslenykova.github.io/calendar-react/)
+     permalink: /index.html
 
 ### The tech stack is:
 
