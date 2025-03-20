@@ -1,6 +1,6 @@
 ## Project: Calendar (JS edition)
 
-### [Syte Link]( https://maslenykova.github.io/calendar-react/)
+#### [Site Link]( https://maslenykova.github.io/calendar-react/)
 
 
 ### The tech stack is:
