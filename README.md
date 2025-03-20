@@ -1,4 +1,4 @@
-## React-calendar-project
+## Calendar-react
 
 ### [Syte Link](https://maslenykova.github.io/calendar-react/)
 
