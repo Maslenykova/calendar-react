@@ -1,6 +1,6 @@
 ## Project: Calendar (JS edition)
 
-### [Syte Link]
+### [Syte Link](https://maslenykova.github.io/calendar-react.netefy.app/)
 
 ### The tech stack is:
 
