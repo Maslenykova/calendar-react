@@ -28,11 +28,12 @@ class App extends Component {
   };
 
 handleAddEvent = (newEvent) => {
-  const { date, startTime, endTime, title } = newEvent;
+  const { date, startTime, endTime, title, description } = newEvent;
   const dateFrom = new Date(`${date}T${startTime}`);
   const dateTo = new Date(`${date}T${endTime}`);
 
-  const eventToSend = { title, dateFrom, dateTo };
+  const eventToSend = { title, dateFrom, dateTo, description };
+
 
   createEvent(eventToSend)
     .then(() => {

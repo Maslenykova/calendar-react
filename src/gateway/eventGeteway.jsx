@@ -9,9 +9,10 @@ export const fetchEvents = () => {
       return res.json();
     })
     .then((eventsList) => {
-      return eventsList.map(({ id, title, dateFrom, dateTo }) => ({
+      return eventsList.map(({ id, title, dateFrom, dateTo, description }) => ({
         id,
         title,
+        description,
         dateFrom: new Date(dateFrom), 
         dateTo: new Date(dateTo),
       }));
@@ -21,6 +22,15 @@ export const fetchEvents = () => {
       return [];
     });
 };
+
+// export const loadEvents = () => {
+//   fetchEvents()
+//     .then((events) => {
+//       console.log('Fetched Events:', events); // проверьте, что приходит в events
+//       this.setState({ events });
+//     })
+//     .catch((error) => console.error('Ошибка загрузки событий:', error));
+// };
 
 export const createEvent = (eventData) => {
   return fetch(baseUrl, {

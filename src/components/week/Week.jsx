@@ -16,11 +16,14 @@ const Week = ({ weekDates, events }) => {
           (event) => event.dateFrom >= dayStart && event.dateFrom <= dayEnd
         );
 
+        console.log('Day events:', dayEvents);
+
         return (
           <Day
             key={dayStart.toISOString()}
             dataDay={dayStart.getDate()}
             dayEvents={dayEvents}
+           
           />
         );
       })}
