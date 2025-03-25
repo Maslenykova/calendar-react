@@ -46,8 +46,6 @@ class Modal extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { title, date, startTime, endTime, description } = this.state;
-
-    console.log(this.state);
   
     if (!title || !date || !startTime || !endTime) {
       alert('Title, Date, Start Time, and End Time are required!');

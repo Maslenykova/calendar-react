@@ -1,6 +1,5 @@
 import React from 'react';
 import Hour from '../hour/Hour';
-
 import './day.scss';
 
 const Day = ({ dataDay, dayEvents }) => {
@@ -8,7 +7,7 @@ const Day = ({ dataDay, dayEvents }) => {
 
   const now = new Date();
   const currentDate = now.toISOString().split('T')[0]; 
-  const dataDayFormatted  = new Date(dataDay).toISOString().split('T')[0];
+  const dataDayFormatted = new Date(dataDay).toISOString().split('T')[0];
 
   const isToday = currentDate === dataDayFormatted;
 
@@ -17,16 +16,18 @@ const Day = ({ dataDay, dayEvents }) => {
   : null;
 
   return (
+
     <div className="calendar__day" data-day={dataDay}>
 
-      {isToday && currentTimePosition !== null && ( 
+
+       {isToday && currentTimePosition !== null && ( 
         <div
           className="current-time-line"
           style={{
             top: `${currentTimePosition}%`, 
           }}
         ></div>
-      )}
+      )} 
 
       {hours.map((hour) => {
         const hourEvents = dayEvents.filter(

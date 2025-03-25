@@ -23,14 +23,6 @@ export const fetchEvents = () => {
     });
 };
 
-// export const loadEvents = () => {
-//   fetchEvents()
-//     .then((events) => {
-//       console.log('Fetched Events:', events); // проверьте, что приходит в events
-//       this.setState({ events });
-//     })
-//     .catch((error) => console.error('Ошибка загрузки событий:', error));
-// };
 
 export const createEvent = (eventData) => {
   return fetch(baseUrl, {

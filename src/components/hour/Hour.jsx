@@ -1,11 +1,9 @@
 import React from 'react';
-
-
 import Event from '../event/Event';
 import { formatMins } from '../../../src/utils/dateUtils.js';
 
 const Hour = ({ dataHour, hourEvents }) => {
-
+ 
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
       {hourEvents.map(({ id, dateFrom, dateTo, title, description }) => {
