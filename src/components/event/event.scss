@@ -6,6 +6,16 @@
   border-radius: 8px;
   padding: 8px;
   color: #fff;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #3c69bd;
+  }
 
   &__title {
     width: 100%;
@@ -13,6 +23,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-bottom: 8px;
+    border-bottom: 1px solid #fff;
   }
 
   &__description {
@@ -23,8 +34,7 @@
   }
 
   &:hover {
-    font-weight: bold;
-    background-color: red;
+    background-color: #3c69bd;
   }
 }
 
