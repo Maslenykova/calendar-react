@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './event.scss';
 
-const Event = ({ title, time, description, height, id, dateFrom, onDeleteEvent}) => { 
+const Event = ({ title, time, description, height, marginTop, id, dateFrom, onDeleteEvent}) => { 
 
   const [showDelete, setShowDelete] = useState(false);
  
@@ -15,7 +15,7 @@ const Event = ({ title, time, description, height, id, dateFrom, onDeleteEvent})
   }
 
   return (
-    <div style={{ height }} onClick={() => setShowDelete(!showDelete)} className="event">
+    <div style={{ height, marginTop }} onClick={() => setShowDelete(!showDelete)} className="event">
       {showDelete && (
         <button
           className="event__delete-btn"

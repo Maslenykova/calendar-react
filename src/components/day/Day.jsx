@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Hour from "../hour/Hour";
 import "./day.scss";
-import Event from "../event/Event";
 
-const Day = ({ dataDay, dayEvents, events, onDeleteEvent}) => {
+
+const Day = ({ dataDay, dayEvents, onDeleteEvent}) => {
   const [currentTimePosition, setCurrentTimePosition] = useState(null);
 
   useEffect(() => {
@@ -34,22 +34,7 @@ const Day = ({ dataDay, dayEvents, events, onDeleteEvent}) => {
         );
 
         return (
-          <Hour key={hour} dataHour={hour} hourEvents={hourEvents}>
-       {hourEvents.map((event) => {
-  return (
-    <Event
-      key={Math.random()}
-      id={event.id}
-      title={event.title}
-      time={`${new Date(event.dateFrom).toLocaleTimeString()} - ${new Date(event.dateTo).toLocaleTimeString()}`}
-      dateFrom={event.dateFrom}
-      description={event.description}
-      events={events}
-      onDeleteEvent={onDeleteEvent}
-    />
-  );
-})}
-          </Hour>
+          <Hour key={hour} dataHour={hour} hourEvents={hourEvents} onDeleteEvent={onDeleteEvent}/>
         );
       })}
     </div>

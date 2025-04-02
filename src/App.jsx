@@ -59,7 +59,7 @@ const App = () => {
 
 
 const onDeleteEvent = (id) => {
-  setEvents(events.filter(event => event.id !== id));
+  deleteEvent(id).then(()=>setEvents(events.filter(event => event.id !== id)))
 };
 
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
