@@ -40,5 +40,14 @@ export const createEvent = (eventData) => {
     });
 };
 
+export const deleteEvent = (id) =>{
+  return fetch(`${baseUrl}/${id}`, {
+      method: 'DELETE'
+  }).then(response => {
+      if(!response.ok){
+          throw new Error('Faild to delete event');
+      };  
+  });
+};
 
 

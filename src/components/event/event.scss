@@ -1,5 +1,5 @@
 .event {
-  position: absolute;
+  position: relative;
   width: 80%;
   background-color: cornflowerblue;
   z-index: 1;
@@ -9,7 +9,7 @@
   overflow-y: scroll;
   overflow-x: hidden;
 
-  &::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 8px;
   }
 
@@ -17,6 +17,26 @@
     background-color: #3c69bd;
   }
 
+  &__delete-btn {
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    right: 0;
+    display: block;
+    border-radius: 3px;
+    font-size: 14px;
+    border: none;
+    background-color: #810909;
+    color: #fff;
+    margin: 0 0 0 auto;
+    cursor: pointer;
+    z-index: 9;
+    top: 0;
+
+    &:hover {
+      background-color: #ee637a;
+    }
+  }
   &__title {
     width: 100%;
     overflow: hidden;
@@ -35,10 +55,6 @@
 
   &:hover {
     background-color: #3c69bd;
+    display: block;
   }
-}
-
-.delete-event-btn {
-  cursor: pointer;
-  border: none;
 }
