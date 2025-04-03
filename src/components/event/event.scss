@@ -1,5 +1,5 @@
 .event {
-  position: relative;
+  position: absolute;
   width: 80%;
   background-color: cornflowerblue;
   z-index: 1;
@@ -8,14 +8,8 @@
   color: #fff;
   overflow-y: scroll;
   overflow-x: hidden;
-
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #3c69bd;
-  }
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0);
 
   &__delete-btn {
     cursor: pointer;

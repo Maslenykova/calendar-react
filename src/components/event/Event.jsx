@@ -15,7 +15,7 @@ const Event = ({ title, time, description, height, marginTop, id, dateFrom, onDe
   }
 
   return (
-    <div style={{ height, marginTop }} onClick={() => setShowDelete(!showDelete)} className="event">
+    <div style={{ height, marginTop}} onClick={() => setShowDelete(!showDelete)} className="event">
       {showDelete && (
         <button
           className="event__delete-btn"
