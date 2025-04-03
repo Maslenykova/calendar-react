@@ -10,8 +10,6 @@ const Hour = ({ dataHour, hourEvents, onDeleteEvent }) => {
         const eventStart = `${dateFrom.getHours()}:${formatMins(dateFrom.getMinutes())}`;
         const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;
 
-        console.log(`${dateFrom.getMinutes()}px`)
-
         return (
           <Event
             key={id}

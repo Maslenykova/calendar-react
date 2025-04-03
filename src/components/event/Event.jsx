@@ -7,7 +7,8 @@ const Event = ({ title, time, description, height, marginTop, id, dateFrom, onDe
  
   const onDelete = () =>{
     const now = new Date();
-      if ((new Date(dateFrom) - now) / (1000 * 60) < 15) {
+    const eventStartTime = new Date(dateFrom);
+      if (eventStartTime.getDay()===now.getDay() && (eventStartTime.getMinutes() - now.getMinutes()) / (1000 * 60) < 15) {
         alert("Event cannot be deleted less than 15 minutes before it starts");
         return;
       }

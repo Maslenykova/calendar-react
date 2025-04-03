@@ -47,11 +47,9 @@ const App = () => {
   
     createEvent(eventToSend)
       .then(() => {
-        console.log('Событие создано, загружаем обновленный список');
         return fetchEvents();
       })
       .then(events => {
-        console.log("Обновленный список событий:", events);
         setEvents(events);
       })
       .catch((error) => console.error('Ошибка при создании события:', error));
