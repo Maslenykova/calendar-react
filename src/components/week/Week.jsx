@@ -2,8 +2,7 @@ import React from 'react';
 import Day from '../day/Day';
 import './week.scss';
 
-const Week = ({ weekDates, events, onDeleteEvent}) => {
- 
+const Week = ({ weekDates, events, setEvents}) => { 
   return (
     <div className="calendar__week">
       {weekDates.map((dayStart) => {
@@ -21,7 +20,7 @@ const Week = ({ weekDates, events, onDeleteEvent}) => {
             dataDay={dayStart}  
             dayEvents={dayEvents}
             events={events}
-            onDeleteEvent={onDeleteEvent}
+            setEvents={setEvents}
           />
         );
       })}

@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
+import { formatMins } from '../../../src/utils/dateUtils.js';
+import { deleteEvent } from '../../gateway/eventGeteway.jsx';
 import './event.scss';
 
-const Event = ({ title, time, description, height, marginTop, id, dateFrom, onDeleteEvent}) => { 
+const Event = ({id, title, description, dateFrom, dateTo, setEvents, events}) => { 
 
   const [showDelete, setShowDelete] = useState(false);
- 
-  const onDelete = () =>{
+
+  const eventStart = `${dateFrom.getHours()}:${formatMins(dateFrom.getMinutes())}`;
+  const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;
+
+  const onDelete = () => {
     const now = new Date();
     const eventStartTime = new Date(dateFrom);
-      if (eventStartTime.getDay()===now.getDay() && (eventStartTime.getMinutes() - now.getMinutes()) / (1000 * 60) < 15) {
-        alert("Event cannot be deleted less than 15 minutes before it starts");
-        return;
-      }
-      onDeleteEvent(id);
-  }
+    const diffInMs = eventStartTime - now;
+    const fifteenMinutes = 15 * 60 * 1000;
+  
+    if (eventStartTime > now && diffInMs < fifteenMinutes) {
+      alert("Event cannot be deleted less than 15 minutes before it starts");
+      return;
+    }
+    deleteEvent(id).then(() => {
+      setEvents(events.filter(event => event.id !== id));
+    });
+  };
 
   return (
-    <div style={{ height, marginTop}} onClick={() => setShowDelete(!showDelete)} className="event">
+    <div style={{  height: `${(dateTo - dateFrom) / (1000 * 60)}px` , marginTop: `${dateFrom.getMinutes()}px`}} onClick={() => setShowDelete(!showDelete)} className="event">
       {showDelete && (
         <button
           className="event__delete-btn"
@@ -26,7 +36,7 @@ const Event = ({ title, time, description, height, marginTop, id, dateFrom, onDe
         </button>
       )}
       <div className="event__title">{title}</div>
-      <div className="event__time">{time}</div>
+      <div className="event__time">{`${eventStart} - ${eventEnd}`}</div>
       <div className="event__description">{description}</div>
     </div>
   );

@@ -3,7 +3,7 @@ import Hour from "../hour/Hour";
 import "./day.scss";
 
 
-const Day = ({ dataDay, dayEvents, onDeleteEvent}) => {
+const Day = ({ dataDay, dayEvents, events, setEvents}) => {
   const [currentTimePosition, setCurrentTimePosition] = useState(null);
 
   useEffect(() => {
@@ -34,7 +34,13 @@ const Day = ({ dataDay, dayEvents, onDeleteEvent}) => {
         );
 
         return (
-          <Hour key={hour} dataHour={hour} hourEvents={hourEvents} onDeleteEvent={onDeleteEvent}/>
+          <Hour
+          key={hour}
+          dataHour={hour}
+          hourEvents={hourEvents}
+          events={events}
+          setEvents={setEvents}
+          />
         );
       })}
     </div>

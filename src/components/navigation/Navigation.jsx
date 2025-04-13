@@ -7,7 +7,7 @@ const Navigation = ({ weekDates }) => {
   const today = new Date();
 
   return (
-    <header className="calendar__header">
+    <header className="calendar__header ">
       {weekDates.map((dayDate) => {
         const isToday =
           dayDate.getDate() === today.getDate() &&

@@ -18,7 +18,7 @@ export const fetchEvents = () => {
       }));
     })
     .catch((error) => {
-      console.error('Ошибка при получении событий:', error);
+      console.error('Error receiving events:', error);
       return [];
     });
 };
@@ -34,10 +34,14 @@ export const createEvent = (eventData) => {
   })
     .then((response) => {
       if (!response.ok) {
-        throw new Error('Ошибка при создании события');
+        throw new Error('Error creating event');
       }
       return response.json(); 
-    });
+    })
+    .catch(error => {
+      console.error('Error creating event:', error);
+      throw error; 
+    });;
 };
 
 export const deleteEvent = (id) =>{
@@ -47,7 +51,11 @@ export const deleteEvent = (id) =>{
       if(!response.ok){
           throw new Error('Faild to delete event');
       };  
-  });
+  })
+  .catch(error => {
+    console.error('Error deleting event:', error);
+    throw error; 
+  });;
 };
 
 
