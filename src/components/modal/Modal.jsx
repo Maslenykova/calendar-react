@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import './modal.scss';
 
 const Modal = ({ onClose, onSubmit }) => {
@@ -6,7 +6,7 @@ const Modal = ({ onClose, onSubmit }) => {
   const getToday = () => now.toISOString().split('T')[0];
   const getCurrentTime = () => now.toTimeString().slice(0, 5);
 
-  const getDefaultEndTime = (startTime) => {
+  const getDefaultEndTime = startTime => {
     const [hours, minutes] = startTime.split(':').map(Number);
     const end = new Date();
     end.setHours(hours + 1, minutes);
@@ -21,12 +21,12 @@ const Modal = ({ onClose, onSubmit }) => {
     description: '',
   });
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     const { title, date, startTime, endTime, description } = formData;
 
@@ -106,4 +106,3 @@ const Modal = ({ onClose, onSubmit }) => {
 };
 
 export default Modal;
-

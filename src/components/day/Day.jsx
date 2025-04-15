@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Hour from "../hour/Hour";
-import "./day.scss";
+import React, { useState, useEffect } from 'react';
+import Hour from '../hour/Hour';
+import './day.scss';
 
-
-const Day = ({ dataDay, dayEvents, events, setEvents}) => {
+const Day = ({ dataDay, dayEvents, events, setEvents }) => {
   const [currentTimePosition, setCurrentTimePosition] = useState(null);
 
   useEffect(() => {
@@ -21,7 +20,6 @@ const Day = ({ dataDay, dayEvents, events, setEvents}) => {
     return () => clearInterval(interval);
   }, [dataDay]);
 
-
   return (
     <div className="calendar__day" data-day={dataDay}>
       {currentTimePosition !== null && (
@@ -29,23 +27,20 @@ const Day = ({ dataDay, dayEvents, events, setEvents}) => {
       )}
 
       {Array.from({ length: 24 }, (_, hour) => {
-        const hourEvents = dayEvents.filter(
-          (event) => new Date(event.dateFrom).getHours() === hour
-        );
+        const hourEvents = dayEvents.filter(event => new Date(event.dateFrom).getHours() === hour);
 
         return (
           <Hour
-          key={hour}
-          dataHour={hour}
-          hourEvents={hourEvents}
-          events={events}
-          setEvents={setEvents}
+            key={hour}
+            dataHour={hour}
+            hourEvents={hourEvents}
+            events={events}
+            setEvents={setEvents}
           />
         );
       })}
     </div>
   );
 };
-
 
 export default Day;

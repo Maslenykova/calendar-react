@@ -1,11 +1,10 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { formatMins } from '../../../src/utils/dateUtils.js';
 import { deleteEvent } from '../../gateway/eventGeteway.jsx';
 import './event.scss';
 
-const Event = ({id, title, description, dateFrom, dateTo, setEvents, events}) => { 
-
-  const [showDelete, setShowDelete] = useState(false);
+const Event = ({ id, title, description, dateFrom, dateTo, setEvents, events }) => {
+  const [isDeleteBtnVisble, setDeleteBtnVisble] = useState(false);
 
   const eventStart = `${dateFrom.getHours()}:${formatMins(dateFrom.getMinutes())}`;
   const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;
@@ -15,9 +14,9 @@ const Event = ({id, title, description, dateFrom, dateTo, setEvents, events}) =>
     const eventStartTime = new Date(dateFrom);
     const diffInMs = eventStartTime - now;
     const fifteenMinutes = 15 * 60 * 1000;
-  
+
     if (eventStartTime > now && diffInMs < fifteenMinutes) {
-      alert("Event cannot be deleted less than 15 minutes before it starts");
+      alert('Event cannot be deleted less than 15 minutes before it starts');
       return;
     }
     deleteEvent(id).then(() => {
@@ -26,12 +25,16 @@ const Event = ({id, title, description, dateFrom, dateTo, setEvents, events}) =>
   };
 
   return (
-    <div style={{  height: `${(dateTo - dateFrom) / (1000 * 60)}px` , marginTop: `${dateFrom.getMinutes()}px`}} onClick={() => setShowDelete(!showDelete)} className="event">
-      {showDelete && (
-        <button
-          className="event__delete-btn"
-          onClick={onDelete}
-        >
+    <div
+      style={{
+        height: `${(dateTo - dateFrom) / (1000 * 60)}px`,
+        marginTop: `${dateFrom.getMinutes()}px`,
+      }}
+      onClick={() => setDeleteBtnVisble(!isDeleteBtnVisble)}
+      className="event"
+    >
+      {isDeleteBtnVisble && (
+        <button className="event__delete-btn" onClick={onDelete}>
           Delete
         </button>
       )}

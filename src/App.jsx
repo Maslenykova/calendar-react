@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/header/Header';
 import Calendar from './components/calendar/Calendar';
 import { fetchEvents } from './gateway/eventGeteway.jsx';
@@ -29,10 +29,10 @@ const App = () => {
   return (
     <>
       <Header
-          weekDates={generateWeekRange(getWeekStartDate(weekStartDate))}
-          setWeekStartDate={setWeekStartDate}
-          events={events}
-          loadEvents={loadEvents}
+        weekDates={generateWeekRange(getWeekStartDate(weekStartDate))}
+        setWeekStartDate={setWeekStartDate}
+        events={events}
+        loadEvents={loadEvents}
       />
       <Calendar
         weekDates={generateWeekRange(getWeekStartDate(weekStartDate))}
@@ -44,7 +44,3 @@ const App = () => {
 };
 
 export default App;
-
-
-
-
